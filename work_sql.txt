@@ -1,0 +1,89 @@
+QUIZE 1:
+
+1) WAQ to display employees name ending with letter 'n'?
+2) WAQ to display employees record who joined in December month?
+3) WAQ to display emplyoees record who doesn't have any manager?
+4) WAQ to display employees record with bonus, bonus will be salary+commission?
+5) WAQ to display whose salary is between 5000 and 10000?
+
+
+
+ANSWERS~~~~~~~~~~
+
+1)select first_name from employees where first_name like '%n';
+
+2) select first_name,hire_date from employees where hire_date like '%DEC%';
+  
+   select * from employees where to_char(hire_date,'MON')='DEC';
+
+3)select first_name from employees where manager_id is null;
+
+4)select employee_id,first_name,salary,salary+commission_pct as bonus from employees 
+where commission_pct is not null
+    select  employee_id,first_name, salary ,salary+commission_pct 
+    as bonus from employees;
+
+    select employee_id, salary, commission_pct, salary+ nvl(commission_pct,0) bonus from employees;
+
+
+5)select first_name,salary from employees where salary between 5000 and 1000;
+________________________________________________________________________________________________________________
+
+                           QUIZE 2:
+
+ANSWERS:
+
+1) select * from employees where hire_date like '%DEC%02';
+
+
+2)select * from employees where salary=(select max(salary) from employees);
+
+3)select max(salary) from employees where salary < (select max(salary) from employees);
+
+4) select * from employees e where e.salary<(select max(salary) from employees b
+where e.department_id=b.department_id group by department_id)
+
+___________________________________________________________________________________________________________________
+
+1) select e.first_name,l.city from employees e,locations l;
+
+2) select first_name, to_char(hire_date,'MON') from employees where to_char(hire_date,'MON') in 
+(select to_char(hire_date,'MON') from employees where first_name='Charles');
+
+________________________________________________________________________________________________________________________
+
+
+1)waq to display all employees located in new Jersey?
+
+   select e.first_name,l.state_province from employees e,locations l where l.state_province='New Jersey';
+
+2)waq to display number of employees joined month wise?
+   select count(*),to_char(hire_date,"MON') as month from employees group by to_char(hire_date,'MON');
+
+3)waq to display highest salary person information?
+   select * from employees where salary=(select max(salary) from employees);
+
+4)waq to display highest salary person information department wise?
+  select * from employees where salary in (select max(salary) from employees group by department_id);
+   
+  select department_id,max(salary) from employee e 
+
+_______________________________________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
