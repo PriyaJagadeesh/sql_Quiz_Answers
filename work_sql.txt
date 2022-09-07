@@ -18,12 +18,7 @@ ANSWERS~~~~~~~~~~
 
 3)select first_name from employees where manager_id is null;
 
-4)select employee_id,first_name,salary,salary+commission_pct as bonus from employees 
-where commission_pct is not null
-    select  employee_id,first_name, salary ,salary+commission_pct 
-    as bonus from employees;
-
-    select employee_id, salary, commission_pct, salary+ nvl(commission_pct,0) bonus from employees;
+4) select employee_id, salary, commission_pct, salary+ nvl(commission_pct,0) bonus from employees;
 
 
 5)select first_name,salary from employees where salary between 5000 and 1000;
